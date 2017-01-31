@@ -1,0 +1,14 @@
+#Data 
+InitialDataFetch.py
+
+#Config File
+Config.conf
+Config.cfg
+
+#network.pickle
+#communities.pickle
+
+InitialData.py
+*.json
+
+__pycache__/
