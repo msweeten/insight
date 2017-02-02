@@ -1,2 +1,27 @@
 {% extends 'layout/main.html' %}
 {% block title %}Minimal{% endblock %}
+{% block content %}
+<div class="container">
+  <h1>Minimal</h1>
+</div>
+<table class="table table-hover">
+<tr><th>Song</th> <th>Click to get more songs like this one!</th></tr>
+{% for song_rows in subgenre %}
+<tr>
+  <td>
+    <iframe src={{ song_rows['widget'] }} width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+
+  </td>
+  
+  <td>
+    <a href={{ song_rows['results_uri'] }}>
+      <img src='{{ url_for('static', filename='images/Checkmark.png') }}' alt="Checkmark">
+    </a>
+  </td>  
+
+</tr>
+
+{% endfor %}
+<table>
+
+{% endblock %}

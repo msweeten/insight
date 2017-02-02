@@ -7,7 +7,6 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Classic Taste - {% block title %}{% endblock %}</title>
-    {% block head %}{% endblock %}
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Classical Music Playlist Generator" />
 	<meta name="keywords" content="classical, playlists, music, spotify" />
@@ -60,10 +59,9 @@
 								<a href="#">Medieval/Renaissance</a>
 								<div class="dropdown-menu-wrap">
 								  <ul>
-										<li><a href="/Chant.html">Chant</a></li>                                    
-										<li><a href="/Early+Music.html">Early Music</a></li>
-										<li><a href="/Renaissance.html">Renaissance</a></li>
-										<li><a href="/Baroque.html">Baroque</a></li>
+										<li><a href="/Early+Music">Early Music</a></li>
+										<li><a href="/Renaissance">Renaissance</a></li>
+										<li><a href="/Baroque">Baroque</a></li>
 									</ul>
 								</div>
 							</div>
@@ -73,9 +71,9 @@
 								<a href="#">Classical to Late Romantic</a>
 								<div class="dropdown-menu-wrap">
 									<ul>
-										<li><a href="/Classical+Period.html">Classical Period</a></li>
-										<li><a href="/Romantic.html">Romantic</a></li>
-										<li><a href="/Opera.html">Opera</a></li>
+										<li><a href="/Classical+Period">Classical Period</a></li>
+										<li><a href="/Romantic">Romantic</a></li>
+										<li><a href="/Opera">Opera</a></li>
 									</ul>
 								</div>
 							</div>
@@ -85,20 +83,20 @@
 								<a href="#">Modern/Post-Modern</a>
 								<div class="dropdown-menu-wrap">
 									<ul>
-										<li><a href="/Avant-Garde.html">Avant-Garde</a></li>
-										<li><a href="/Minimal.html">Minimal</a></li>
-										<li><a href="/Orchestral.html">Orchestral</a></li>
+										<li><a href="/Avant-Garde">Avant-Garde</a></li>
+										<li><a href="/Minimal">Minimal</a></li>
+										<li><a href="/Orchestral">Orchestral</a></li>
 									</ul>
 								</div>
 							</div>
 						</li>
-						<li><a href="slides.html">Slides</a></li>
-						<li class="cta"><a href="contact.html">Contact</a></li>
+						<li><a href="slides">Slides</a></li>
 					</ul>
 				</nav>
 			</div>
             
         </header>
+        {% block songname %}{% endblock %}
         {% block content %}{% endblock %}
         <footer id="fh5co-footer" role="contentinfo">
 			<div class="container">
@@ -115,7 +113,7 @@
 							<ul class="fh5co-footer-link">
 								<li><a href="/home.html">Home</a></li>
 								<li><a href="/about.html">About</a></li>
-								<li><a href="/slides.html">Slides</a></li>
+								<li><a href="/slides">Slides</a></li>
 							</ul>
 						</div>
 					</div>
