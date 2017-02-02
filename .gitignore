@@ -4,6 +4,7 @@ InitialDataFetch.py
 #Config File
 Config.conf
 Config.cfg
+Config.py
 
 #network.pickle
 #communities.pickle
