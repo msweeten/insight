@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Classic Taste</title>
+
+		<link rel="stylesheet" href='{{url_for('static', filename='plugin/reveal.js-master/css/reveal.css') }}'>
+		<link rel="stylesheet" href='{{url_for('static', filename='plugin/reveal.js-master/css/theme/solarized.css') }}'>
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href='{{url_for('static', filename='plugin/reveal.js-master/lib/css/zenburn.css')}}'>
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '/home/msweeten/insight/app/static/plugin/reveal.js-master/css/print/pdf.css' : '/home/msweeten/insight/app/static/plugin/reveal.js-master/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+			  <section>
+                <h1>Classic Taste</h1>
+                <div>
+                  <br>
+                </div>
+                <div>
+                  <img src='{{url_for('static', filename='images/LogoM.png')}}'>
+                  <br>
+                </div>
+
+                <div> <br>
+                </div>
+                <div>Matthew Sweeten</div>
+                <div>Data Science Fellow, Insight Data Science</div>
+              </section>
+			  <section>
+                <section id="fragments">
+						<h2>The Problem</h2>
+						<p>I love classical music!</p>
+                        <p class="fragment">Easy to find songs that are popular.</p>
+						<p class="fragment">Finding similar songs can be hard.</p>
+						<p class="fragment">Spotify's genre data is woefully inadequate.</p>
+                </section>
+
+              </section>
+              
+              <section>
+                <h2>Does not really perform well...</h2>
+                <div>
+                  <img src='{{url_for('static', filename='images/SpotifyScreenShot.jpg')}}'>
+                  <br>
+                </div>
+              </section>
+              <section>
+                <h2>What's the concept behind my playlists?</h2>
+                <div><br></div>
+                <div>Rich metadata from Spotify</div>
+                <div><br></div>
+                <div>Multiple recordings for one song</div>                
+              </section>
+              <section>
+                <h5>Here's what I did</h5>
+
+                <ul>
+				  <li>Collected metadata of ~80,000 songs from Spotify Web API</li>
+				  <li>Organized metadata in PostgreSQL</li>
+                  <li>Fuzzy matching, clause matching for songs</li>
+				  <li>Example: Fur Elise; Fur Elise, WoO 59; Bagatelle in A Minor, WoO 59 - "Fur Elise":Poco moto</li>
+				  <li>Take song matches and treat as nodes</li>
+                  <li>Treat sharing an album as a weighted link between nodes</li>
+                  <li>~45,000 Nodes and ~550,000 Edges implemented in igraph</li>
+				</ul>
+                </section>
+                <section>
+                  <h5>The Algorithm</h5>
+                  <div><br></div>
+                  <div>Perform unsupervised community detection clustering with Infomap</div>
+                  <div><br></div>
+                  <div>No labels attached to communities</div>
+                  <div><br></div>
+                  <div>Majority voting on communities with labeled data</div>
+                </section>
+                <section>
+                  <h3>Predicted Labels</h3>
+                  <img src='{{url_for('static', filename='images/00001.jpg')}}' style="max-width: 550px">
+                </section>
+                <section>
+                  <h2>I'm Matthew Sweeten.</h2>
+                  <img src="{{url_for('static', filename='images/SweetenHeadshot.jpg')}}" style="max-width: 200px; position: absolute; top: 100px; left: 150px;">
+                  <img src="{{url_for('static', filename='images/asu.jpg')}}" style="max-width: 200px; position: absolute; top: 300px; left: 150px;">
+
+                    <img src="{{url_for('static', filename='images/UR.2col.v1.jpg')}}" style="max-width: 200px; position: absolute; top: 500px; left: 150px;">
+                    <div style="position: absolute; left: 570px; top: 120px;">
+                      <h3 style="text-align: left;">Political Methodology</h3>
+                      <p style="text-align: left;">Unsupervised Text Classification</p>
+                      <p style="text-align: left;">Political Preference Estimation</p>
+                      <p style="text-align: left;">Text as Data</p>
+                      <p style="text-align: left;">Semantic Modeling</p>
+                    </div>
+                  </section>
+
+</section>
+			</div>
+		</div>
+
+		<script src='{{url_for('static', filename='plugin/reveal.js-master/lib/js/head.min.js')}}'></script>
+		<script src='{{url_for('static', filename='plugin/reveal.js-master/js/reveal.js')}}'></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: '{{url_for('static', filename='plugin/reveal.js-master/plugin/markdown/marked.js')}}' },
+					{ src: '{{url_for('static', filename='plugin/reveal.js-master/plugin/markdown/markdown.js')}}' },
+					{ src: '{{url_for('static', filename='plugin/reveal.js-master/plugin/notes/notes.js')}}', async: true },
+					{ src: '{{url_for('static', filename='plugin/reveal.js-master/plugin/highlight/highlight.js')}}', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

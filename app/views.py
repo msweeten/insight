@@ -32,10 +32,13 @@ def home():
 @app.route('/about.html')
 def about():
     return render_template('about.html')
+@app.route('/results/about.html')
+def about2():
+    return render_template('about.html')
 @app.route('/Avant-Garde')
 def avant():
     con = connect()
-    query = """SELECT "Uri" FROM node_communities WHERE "NewGenre"='Avant-Garde' ORDER BY "popularity" LIMIT 20;"""
+    query = """SELECT "Uri" FROM node_communities WHERE "NewGenre"='Avant-Garde' ORDER BY "popularity" DESC LIMIT 20;"""
     query_results = pd.read_sql_query(query, con)
     subgenre = []
     query_results_v = list(query_results['Uri'])
@@ -49,7 +52,7 @@ def avant():
 @app.route('/Minimal')
 def minimal():
     con = connect()
-    query = """SELECT "Uri" FROM node_communities WHERE "NewGenre"='Minimal' ORDER BY "popularity" LIMIT 20;"""
+    query = """SELECT "Uri" FROM node_communities WHERE "NewGenre"='Minimal' ORDER BY "popularity" DESC LIMIT 20;"""
     query_results = pd.read_sql_query(query, con)
     subgenre = []
     query_results_v = list(query_results['Uri'])
@@ -63,7 +66,7 @@ def minimal():
 @app.route('/Orchestral')
 def orchestral():
     con = connect()
-    query = """SELECT "Uri" FROM node_communities WHERE "NewGenre"='Orchestral' ORDER BY "popularity" LIMIT 20;"""
+    query = """SELECT "Uri" FROM node_communities WHERE "NewGenre"='Orchestral' ORDER BY "popularity" DESC LIMIT 20;"""
     query_results = pd.read_sql_query(query, con)
     subgenre = []
     query_results_v = list(query_results['Uri'])
@@ -77,7 +80,7 @@ def orchestral():
 @app.route('/Romantic')
 def romantic():
     con = connect()
-    query = """SELECT "Uri" FROM node_communities WHERE "NewGenre"='Romantic' ORDER BY "popularity" LIMIT 20;"""
+    query = """SELECT "Uri" FROM node_communities WHERE "NewGenre"='Romantic' ORDER BY "popularity" DESC LIMIT 20;"""
     query_results = pd.read_sql_query(query, con)
     subgenre = []
     query_results_v = list(query_results['Uri'])
@@ -91,7 +94,7 @@ def romantic():
 @app.route('/Classical+Period')
 def classical():
     con = connect()
-    query = """SELECT "Uri" FROM node_communities WHERE "NewGenre"='Classical Period' ORDER BY "popularity" LIMIT 20;"""
+    query = """SELECT "Uri" FROM node_communities WHERE "NewGenre"='Classical Period' ORDER BY "popularity" DESC LIMIT 20;"""
     query_results = pd.read_sql_query(query, con)
     subgenre = []
     query_results_v = list(query_results['Uri'])
@@ -105,7 +108,7 @@ def classical():
 @app.route('/Early+Music')
 def earlymusic():
     con = connect()
-    query = """SELECT "Uri" FROM node_communities WHERE "NewGenre"='Early Music' ORDER BY "popularity" LIMIT 20;"""
+    query = """SELECT "Uri" FROM node_communities WHERE "NewGenre"='Early Music' ORDER BY "popularity" DESC LIMIT 20;"""
     query_results = pd.read_sql_query(query, con)
     subgenre = []
     query_results_v = list(query_results['Uri'])
@@ -119,7 +122,7 @@ def earlymusic():
 @app.route('/Opera')
 def Opera():
     con = connect()
-    query = """SELECT "Uri" FROM node_communities WHERE "NewGenre"='Opera' ORDER BY "popularity" LIMIT 20;"""
+    query = """SELECT "Uri" FROM node_communities WHERE "NewGenre"='Opera' ORDER BY "popularity" DESC LIMIT 20;"""
     query_results = pd.read_sql_query(query, con)
     subgenre = []
     query_results_v = list(query_results['Uri'])
@@ -133,7 +136,7 @@ def Opera():
 @app.route('/Baroque')
 def baroque():
     con = connect()
-    query = """SELECT "Uri" FROM node_communities WHERE "NewGenre"='Baroque' ORDER BY "popularity" LIMIT 20;"""
+    query = """SELECT "Uri" FROM node_communities WHERE "NewGenre"='Baroque' ORDER BY "popularity" DESC LIMIT 20;"""
     query_results = pd.read_sql_query(query, con)
     subgenre = []
     query_results_v = list(query_results['Uri'])
@@ -147,7 +150,7 @@ def baroque():
 @app.route('/Renaissance')
 def ren():
     con = connect()
-    query = """SELECT "Uri" FROM node_communities WHERE "NewGenre"='Renaissance' ORDER BY "popularity" LIMIT 20;"""
+    query = """SELECT "Uri" FROM node_communities WHERE "NewGenre"='Renaissance' ORDER BY "popularity" DESC LIMIT 20;"""
     query_results = pd.read_sql_query(query, con)
     subgenre = []
     query_results_v = list(query_results['Uri'])
@@ -160,10 +163,29 @@ def ren():
     return render_template('Renaissance.html', subgenre = subgenre)
 @app.route('/results/<song_uri>')
 def get_song_uri(song_uri):
+    con = connect()
     previous_song = base + song_uri.replace('/results', '')
     print previous_song
     previous_song = dict({'uri': previous_song})
 
-    query = text("""SELECT "Community" FROM node_communities WHERE "Uri" = :ge""").bindparams(ge=(song_uri))
-    return render_template('results.html', previous_song = previous_song)
+    query = """SELECT "Community" FROM node_communities WHERE "Uri" = '%s';""" % (song_uri)
+    query_result = pd.read_sql_query(query, con)
+    query_result = query_result.iloc[0]['Community']
+    query_comm = """SELECT "Uri" FROM node_communities WHERE "Community" = %s ORDER BY "popularity" DESC LIMIT 50;""" % (query_result)
+    comm_results = pd.read_sql_query(query_comm, con)
+    subgenre = []
+    comm_results_v = list(comm_results['Uri'])
+    print comm_results_v
+    for i in range(len(comm_results_v)):
+        print comm_results_v[i]
+        dict_song = mydict([['widget', base + comm_results_v[i]], ['results_uri', '/results/' + comm_results_v[i]]])
+        subgenre.append(dict_song)
+    return render_template('results.html', previous_song = previous_song, subgenre = subgenre)
 
+@app.route('/slides')
+def slides():
+    return render_template('slides.html')
+
+@app.route('/results/slides')
+def slides2():
+    return render_template('slides.html')
