@@ -4,9 +4,15 @@ import psycopg2
 import pandas as pd
 import json
 
+
 app.config.from_pyfile('/home/msweeten/insight/Config.py')
 
 print(app.config['DB_HOST'])
+
+def run_task():
+
+    
+    print("I don't like SQL")
 
 def connect():
     db_connect = psycopg2.connect(
@@ -189,3 +195,6 @@ def slides():
 @app.route('/results/slides')
 def slides2():
     return render_template('slides.html')
+@app.route('/<genre>/<int:page>/')
+
+@app.route('/<genre>/PreviousResults')

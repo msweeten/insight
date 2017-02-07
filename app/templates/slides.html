@@ -41,11 +41,11 @@
               </section>
 			  <section>
                 <section id="fragments">
+						<p>I love classical music!</p>                  
 						<h2>The Problem</h2>
-						<p>I love classical music!</p>
                         <p class="fragment">Easy to find songs that are popular.</p>
 						<p class="fragment">Finding similar songs can be hard.</p>
-						<p class="fragment">Spotify's genre data is woefully inadequate.</p>
+						<p class="fragment">Spotify's genre data applies to artists, not songs</p>
                 </section>
 
               </section>
@@ -66,15 +66,30 @@
               </section>
               <section>
                 <h5>Here's what I did</h5>
+                <div>
+				  <img src='{{url_for('static', filename='images/Spotify_Icon_RGB_Green.png')}}' style="max-width: 100px; position: absolute; top: 50px; left: 65px;">
+                  <p style="vertical-align:middle">~80,000 songs in JSON format</p>
+                  <span>&#8595;</span>
+                </div>
+                <div>
 
-                <ul>
-				  <li>Collected metadata of ~80,000 songs from Spotify Web API</li>
-				  <li>Organized metadata in PostgreSQL</li>
-                  <li>Fuzzy matching, clause matching for songs</li>
-				  <li>Example: Fur Elise; Fur Elise, WoO 59; Bagatelle in A Minor, WoO 59 - "Fur Elise":Poco moto</li>
-				  <li>Take song matches and treat as nodes</li>
-                  <li>Treat sharing an album as a weighted link between nodes</li>
-                  <li>~45,000 Nodes and ~550,000 Edges implemented in igraph</li>
+                  <img src='{{url_for('static', filename='images/Postgres.png')}}' style="max-width: 100px; position: absolute; top: 200px; left: 65px;">
+                  <p style="vertical-align:middle">Stored in PostgreSQL</p>
+
+                </div>
+                <div>
+                  <span>&#8595;</span>
+                  <img src='{{url_for('static', filename='images/python-logo.png')}}' style="max-width: 100px; position: absolute; top: 335px; left:65px;">
+                  <p>Match different song names</p>
+                </div>
+                <div>
+                  <span>&#8595;</span>
+                  <img src='{{url_for('static', filename='images/igraph3.svg')}}' style="max-width: 100px; position: absolute; top:520px; left:65px;">
+                  <p>Songs as nodes, albums as links</p>
+                  <p>~45,000 nodes and 550,000 edges</p>
+
+                </div>
+
 				</ul>
                 </section>
                 <section>
@@ -97,7 +112,7 @@
 
                     <img src="{{url_for('static', filename='images/UR.2col.v1.jpg')}}" style="max-width: 200px; position: absolute; top: 500px; left: 150px;">
                     <div style="position: absolute; left: 570px; top: 120px;">
-                      <h3 style="text-align: left;">Political Methodology</h3>
+                      <h3 style="text-align: left;">Ph.D. Political Methodology</h3>
                       <p style="text-align: left;">Unsupervised Text Classification</p>
                       <p style="text-align: left;">Political Preference Estimation</p>
                       <p style="text-align: left;">Text as Data</p>

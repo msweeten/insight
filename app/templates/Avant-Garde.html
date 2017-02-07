@@ -5,23 +5,31 @@
   <h1>Avante-Garde</h1>
 </div>
 <table class="table table-hover">
-<tr><th>Song</th> <th>Click to get more songs like this one!</th></tr>
 {% for song_rows in subgenre %}
+{% if loop.index % 2 == 1 %}
 <tr>
+  {% endif %}
   <td>
-    <iframe src={{ song_rows['widget'] }} width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+    <table>
 
+      <tr>
+        <td>
+          <iframe src={{ song_rows['widget'] }} width="350" height="80" frameborder="0" allowtransparency="true"></iframe>
   </td>
-  
+  </tr>
+ <tr>
   <td>
     <a href={{ song_rows['results_uri'] }}>
-      <img src='{{ url_for('static', filename='images/Button.png') }}' alt="Checkmark">
+      <img src='{{ url_for('static', filename='images/button1.png') }}' alt="Checkmark" align="center">
     </a>
-  </td>  
+  </td>
+ </tr>
+ </table>
+ </td>
 
-</tr>
-
+{% if loop.index == subgenre|length or loop.index % 2 == 0 %}
+  </tr>
+{% endif %}
 {% endfor %}
-<table>
-
+</table>
 {% endblock %}
