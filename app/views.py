@@ -9,11 +9,6 @@ app.config.from_pyfile('/home/msweeten/insight/Config.py')
 
 print(app.config['DB_HOST'])
 
-def run_task():
-
-    
-    print("I don't like SQL")
-
 def connect():
     db_connect = psycopg2.connect(
         database = app.config['DATABASE'],
@@ -38,8 +33,6 @@ def home():
 @app.route('/about.html')
 def about():
     return render_template('about.html')
-@app.route('/results/about.html')
-def about2():
     return render_template('about.html')
 @app.route('/Avant-Garde')
 def avant():
@@ -52,7 +45,7 @@ def avant():
     print query_results_v
     for i in range(len(query_results_v)):
         print query_results_v[i]
-        dict_song = mydict([['widget', base + query_results_v[i]], ['results_uri', '/results/' + query_results_v[i]]])
+        dict_song = mydict([['widget', base + query_results_v[i]], ['results_uri', '/' + query_results_v[i]]])
         subgenre.append(dict_song)
     return render_template('Avant-Garde.html', subgenre = subgenre)
 @app.route('/Minimal')
@@ -66,7 +59,7 @@ def minimal():
     print query_results_v
     for i in range(len(query_results_v)):
         print query_results_v[i]
-        dict_song = mydict([['widget', base + query_results_v[i]], ['results_uri', '/results/' + query_results_v[i]]])
+        dict_song = mydict([['widget', base + query_results_v[i]], ['results_uri', '/' + query_results_v[i]]])
         subgenre.append(dict_song)
     return render_template('Minimal.html', subgenre = subgenre)
 @app.route('/Orchestral')
@@ -80,7 +73,7 @@ def orchestral():
     print query_results_v
     for i in range(len(query_results_v)):
         print query_results_v[i]
-        dict_song = mydict([['widget', base + query_results_v[i]], ['results_uri', '/results/' + query_results_v[i]]])
+        dict_song = mydict([['widget', base + query_results_v[i]], ['results_uri',  '/' + query_results_v[i]]])
         subgenre.append(dict_song)
     return render_template('Orchestral.html', subgenre = subgenre)
 @app.route('/Romantic')
@@ -94,7 +87,7 @@ def romantic():
     print query_results_v
     for i in range(len(query_results_v)):
         print query_results_v[i]
-        dict_song = mydict([['widget', base + query_results_v[i]], ['results_uri', '/results/' + query_results_v[i]]])
+        dict_song = mydict([['widget', base + query_results_v[i]], ['results_uri', '/'+ query_results_v[i]]])
         subgenre.append(dict_song)
     return render_template('Romantic.html', subgenre = subgenre)
 @app.route('/Classical+Period')
@@ -108,7 +101,7 @@ def classical():
     print query_results_v
     for i in range(len(query_results_v)):
         print query_results_v[i]
-        dict_song = mydict([['widget', base + query_results_v[i]], ['results_uri', '/results/' + query_results_v[i]]])
+        dict_song = mydict([['widget', base + query_results_v[i]], ['results_uri',  '/' + query_results_v[i]]])
         subgenre.append(dict_song)
     return render_template('Classical+Period.html', subgenre = subgenre)
 @app.route('/Early+Music')
@@ -122,7 +115,7 @@ def earlymusic():
     print query_results_v
     for i in range(len(query_results_v)):
         print query_results_v[i]
-        dict_song = mydict([['widget', base + query_results_v[i]], ['results_uri', '/results/' + query_results_v[i]]])
+        dict_song = mydict([['widget', base + query_results_v[i]], ['results_uri',  '/' +query_results_v[i]]])
         subgenre.append(dict_song)
     return render_template('Early+Music.html', subgenre = subgenre)
 @app.route('/Opera')
@@ -136,7 +129,7 @@ def Opera():
     print query_results_v
     for i in range(len(query_results_v)):
         print query_results_v[i]
-        dict_song = mydict([['widget', base + query_results_v[i]], ['results_uri', '/results/' + query_results_v[i]]])
+        dict_song = mydict([['widget', base + query_results_v[i]], ['results_uri',  '/' + query_results_v[i]]])
         subgenre.append(dict_song)
     return render_template('Opera.html', subgenre = subgenre)
 @app.route('/Baroque')
@@ -150,7 +143,7 @@ def baroque():
     print query_results_v
     for i in range(len(query_results_v)):
         print query_results_v[i]
-        dict_song = mydict([['widget', base + query_results_v[i]], ['results_uri', '/results/' + query_results_v[i]]])
+        dict_song = mydict([['widget', base + query_results_v[i]], ['results_uri',  '/' + query_results_v[i]]])
         subgenre.append(dict_song)
     return render_template('Baroque.html', subgenre = subgenre)
 @app.route('/Renaissance')
@@ -164,10 +157,10 @@ def ren():
     print query_results_v
     for i in range(len(query_results_v)):
         print query_results_v[i]
-        dict_song = mydict([['widget', base + query_results_v[i]], ['results_uri', '/results/' + query_results_v[i]]])
+        dict_song = mydict([['widget', base + query_results_v[i]], ['results_uri', '/'+ query_results_v[i]]])
         subgenre.append(dict_song)
     return render_template('Renaissance.html', subgenre = subgenre)
-@app.route('/results/<song_uri>')
+@app.route('/<song_uri>')
 def get_song_uri(song_uri):
     con = connect()
     previous_song = base + song_uri.replace('/results', '')
@@ -184,7 +177,7 @@ def get_song_uri(song_uri):
     print comm_results_v
     for i in range(len(comm_results_v)):
         print comm_results_v[i]
-        dict_song = mydict([['widget', base + comm_results_v[i]], ['results_uri', '/results/' + comm_results_v[i]]])
+        dict_song = mydict([['widget', base + comm_results_v[i]], ['results_uri',  '/' + comm_results_v[i]]])
         subgenre.append(dict_song)
     return render_template('results.html', previous_song = previous_song, subgenre = subgenre)
 
@@ -192,9 +185,6 @@ def get_song_uri(song_uri):
 def slides():
     return render_template('slides.html')
 
-@app.route('/results/slides')
-def slides2():
-    return render_template('slides.html')
-@app.route('/<genre>/<int:page>/')
+#@app.route('/<genre>/<int:page>/')
 
-@app.route('/<genre>/PreviousResults')
+#@app.route('/<genre>/PreviousResults')

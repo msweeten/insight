@@ -39,58 +39,115 @@
                 <div>Matthew Sweeten</div>
                 <div>Data Science Fellow, Insight Data Science</div>
               </section>
-			  <section>
-                <section id="fragments">
-						<p>I love classical music!</p>                  
-						<h2>The Problem</h2>
-                        <p class="fragment">Easy to find songs that are popular.</p>
-						<p class="fragment">Finding similar songs can be hard.</p>
-						<p class="fragment">Spotify's genre data applies to artists, not songs</p>
-                </section>
-
-              </section>
-              
               <section>
-                <h2>Does not really perform well...</h2>
+                <section>
+                  <p> I love classical music!</p>
+                <h2>A Simple Request</h2>
                 <div>
-                  <img src='{{url_for('static', filename='images/SpotifyScreenShot.jpg')}}'>
+                  <img src='{{url_for('static', filename='images/Search1.png')}}'>
                   <br>
                 </div>
+                </section>
+                <section data-transitions="fade-out">
+                  <h2>Some Good Results...</h2>
+                  <div>
+                  <img src='{{url_for('static', filename='images/Songs1.png')}}'>
+                  <br>
+                  </div>
+                  <div class="fragment">
+                  <img src='{{url_for('static', filename='images/Bach.jpg')}}' style="max-width: 100px; position: absolute; top: 450px; left:-150px">
+                  <p style="position: absolute; top: 508px; left:-30px">&#8594;</p>
+                  </div>
+                </section>
+                <section>
+                  
+                  <h2>Uh Oh!</h2>
+                  <div>
+                  <img src='{{url_for('static', filename='images/Songs2_blur_nonbach.png')}}' style="max-width: 800px">
+                  <br>
+                  </div>
+                  <div class="fragment">
+                    <p style="position: absolute; top: 200px; left:-130px">Romantic</p>
+                    <p style="position: absolute; top: 250px; left:-130px">Period:</p>
+                    <p style="position: absolute; top: 300px; left:-130px">1780-1910</p>
+                  </div>
+                  <div class="fragment">
+                    <p style="position: absolute; top: 200px; left:925px">Bach:</p>
+                    <p style="position: absolute; top: 300px; left:880px">1685-</p>
+                    <p style="position: absolute; top: 300px; left:985px">1750</p>>
+                  </div>
+                  </section>
+                <section>
+
+                  <h2>Why Such Bad Results?</h2>
+
+                  <div>
+                    <img src='{{url_for('static', filename='images/Artists.png')}}'>
+                    <br>
+                  </div>
+
+                  <div class="fragment">
+                    <img src='{{url_for('static', filename='images/Artists_X2.png')}}' style="position: absolute; left:16px; top:141.5px">
+                    <br>
+                  </div>
+                </section>
               </section>
               <section>
                 <h2>What's the concept behind my playlists?</h2>
                 <div><br></div>
-                <div>Rich metadata from Spotify</div>
-                <div><br></div>
-                <div>Multiple recordings for one song</div>                
+                <div style="position: absolute; top: 150px; left:720px">Rich metadata from Spotify
+                <ul>
+                  <li>Song Name
+                  </li>
+                  <li>Artist Name
+                  </li>                  
+                  <li>Album Name
+                  </li>
+                  <li>
+                    Genre Tags
+                  </li>
+                  <li>
+                    Popularity
+                    </li>
+                </ul>
+                </div>
+                <div style="position: absolute; top: 350px; left:-100px" >Multiple recordings</div>
+                <div style="position: absolute; top: 400px; left:-100px">for one song</div>
+                <div>
+                  <img src='{{url_for('static', filename='images/beethoven.jpg')}}'>
+                  <img src='{{url_for('static', filename='images/romantic.jpg')}}'>
+                  <img src='{{url_for('static', filename='images/FurElise1.png')}}' style="position: absolute; top: 550px; left:500px">
+                  <img src='{{url_for('static', filename='images/FurElise2.png')}}' style="max-width: 200px; position: absolute; top: 550px; left:250px">                  
+                </div>
               </section>
               <section>
                 <h5>Here's what I did</h5>
-                <div>
-				  <img src='{{url_for('static', filename='images/Spotify_Icon_RGB_Green.png')}}' style="max-width: 100px; position: absolute; top: 50px; left: 65px;">
+                <section id="fragments">
+                <div class="fragment">
+				  <img src='{{url_for('static', filename='images/Spotify_Icon_RGB_Green.png')}}' style="max-width: 100px; position: absolute; top: 0px; left: 65px;">
                   <p style="vertical-align:middle">~80,000 songs in JSON format</p>
-                  <span>&#8595;</span>
                 </div>
-                <div>
-
-                  <img src='{{url_for('static', filename='images/Postgres.png')}}' style="max-width: 100px; position: absolute; top: 200px; left: 65px;">
+                <div class="fragment">
+                  
+                  <span>&#8595;</span>
+                  <img src='{{url_for('static', filename='images/Postgres.png')}}' style="max-width: 100px; position: absolute; top: 150px; left: 65px;">
                   <p style="vertical-align:middle">Stored in PostgreSQL</p>
 
                 </div>
-                <div>
+                <div class="fragment">
                   <span>&#8595;</span>
-                  <img src='{{url_for('static', filename='images/python-logo.png')}}' style="max-width: 100px; position: absolute; top: 335px; left:65px;">
+                  <img src='{{url_for('static', filename='images/python-logo.png')}}' style="max-width: 100px; position: absolute; top: 280px; left:65px;">
                   <p>Match different song names</p>
                 </div>
-                <div>
+                <div class="fragment">
                   <span>&#8595;</span>
-                  <img src='{{url_for('static', filename='images/igraph3.svg')}}' style="max-width: 100px; position: absolute; top:520px; left:65px;">
+                  <img src='{{url_for('static', filename='images/igraph3.svg')}}' style="max-width: 100px; position: absolute; top:475px; left:65px;">
                   <p>Songs as nodes, albums as links</p>
                   <p>~45,000 nodes and 550,000 edges</p>
 
                 </div>
+                </section>
 
-				</ul>
                 </section>
                 <section>
                   <h5>The Algorithm</h5>
