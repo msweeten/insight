@@ -37,7 +37,7 @@
                 <div> <br>
                 </div>
                 <div>Matthew Sweeten</div>
-                <div>Data Science Fellow, Insight Data Science</div>
+                <div>Classical Music for Discerning Taste</div>
               </section>
               <section>
                 <section>
@@ -55,34 +55,32 @@
                   <br>
                   </div>
                   <div class="fragment">
-                  <img src='{{url_for('static', filename='images/Bach.jpg')}}' style="max-width: 100px; position: absolute; top: 450px; left:-150px">
-                  <p style="position: absolute; top: 508px; left:-30px">&#8594;</p>
+                  <img src='{{url_for('static', filename='images/Bach.jpg')}}' style="max-width: 100px; position: absolute; top: 450px; left:175px">
+                  <p style="position: absolute; top: 508px; left:300px">&#8594;</p>
                   </div>
                 </section>
-                <section>
+                <section data-background='{{url_for('static', filename='images/Songs2_blur_nonbach.png')}}'>
                   
-                  <h2>Uh Oh!</h2>
-                  <div>
-                  <img src='{{url_for('static', filename='images/Songs2_blur_nonbach.png')}}' style="max-width: 800px">
-                  <br>
+                  <h2 style="position: absolute; top: 000px; left:375px"><font color="99ff66"> Uh Oh!</font></h2>
+
+                  <div><br></div>
+                  <div class="fragment" style="position: absolute; top: 190px; left: 300px;width:300px;height:475px;border:2px solid #ff1a1a;">
+                    
                   </div>
-                  <div class="fragment">
-                    <p style="position: absolute; top: 200px; left:-130px">Romantic</p>
-                    <p style="position: absolute; top: 250px; left:-130px">Period:</p>
-                    <p style="position: absolute; top: 300px; left:-130px">1780-1910</p>
+                  <div class="fragment" style="position: absolute; top: 310px; left: -100px;">
+                    <img src='{{url_for('static', filename='images/Bach4.jpg')}}' style="max-width: 300px;">
                   </div>
-                  <div class="fragment">
-                    <p style="position: absolute; top: 200px; left:925px">Bach:</p>
-                    <p style="position: absolute; top: 300px; left:880px">1685-</p>
-                    <p style="position: absolute; top: 300px; left:985px">1750</p>>
+                  <div class="fragment" style="position: absolute; top: 100px; left: 650px;">
+                    <img src='{{url_for('static', filename='images/Caspar1.jpg')}}' style="max-width: 400px;">
+                    
                   </div>
                   </section>
-                <section>
+                <section> 
 
                   <h2>Why Such Bad Results?</h2>
 
                   <div>
-                    <img src='{{url_for('static', filename='images/Artists.png')}}'>
+                    <img src='{{url_for('static', filename='images/Artists.png')}}' style="width: 3000px;">
                     <br>
                   </div>
 
@@ -94,30 +92,11 @@
               </section>
               <section>
                 <h2>What's the concept behind my playlists?</h2>
-                <div><br></div>
-                <div style="position: absolute; top: 150px; left:720px">Rich metadata from Spotify
-                <ul>
-                  <li>Song Name
-                  </li>
-                  <li>Artist Name
-                  </li>                  
-                  <li>Album Name
-                  </li>
-                  <li>
-                    Genre Tags
-                  </li>
-                  <li>
-                    Popularity
-                    </li>
-                </ul>
-                </div>
-                <div style="position: absolute; top: 350px; left:-100px" >Multiple recordings</div>
-                <div style="position: absolute; top: 400px; left:-100px">for one song</div>
                 <div>
+                  <p>Multiple recordings for one song</p>
                   <img src='{{url_for('static', filename='images/beethoven.jpg')}}'>
                   <img src='{{url_for('static', filename='images/romantic.jpg')}}'>
-                  <img src='{{url_for('static', filename='images/FurElise1.png')}}' style="position: absolute; top: 550px; left:500px">
-                  <img src='{{url_for('static', filename='images/FurElise2.png')}}' style="max-width: 200px; position: absolute; top: 550px; left:250px">                  
+                  <p>Fur Elise</p>
                 </div>
               </section>
               <section>
@@ -125,7 +104,7 @@
                 <section id="fragments">
                 <div class="fragment">
 				  <img src='{{url_for('static', filename='images/Spotify_Icon_RGB_Green.png')}}' style="max-width: 100px; position: absolute; top: 0px; left: 65px;">
-                  <p style="vertical-align:middle">~80,000 songs in JSON format</p>
+                  <p style="vertical-align:middle">~80,000 songs</p>
                 </div>
                 <div class="fragment">
                   
@@ -133,8 +112,6 @@
                   <img src='{{url_for('static', filename='images/Postgres.png')}}' style="max-width: 100px; position: absolute; top: 150px; left: 65px;">
                   <p style="vertical-align:middle">Stored in PostgreSQL</p>
 
-                </div>
-                <div class="fragment">
                   <span>&#8595;</span>
                   <img src='{{url_for('static', filename='images/python-logo.png')}}' style="max-width: 100px; position: absolute; top: 280px; left:65px;">
                   <p>Match different song names</p>
@@ -142,34 +119,112 @@
                 <div class="fragment">
                   <span>&#8595;</span>
                   <img src='{{url_for('static', filename='images/igraph3.svg')}}' style="max-width: 100px; position: absolute; top:475px; left:65px;">
-                  <p>Songs as nodes, albums as links</p>
-                  <p>~45,000 nodes and 550,000 edges</p>
+                  <p>Nodes: Songs (~45,000)</p>
+                  <p>Links: Albums (~550,000)</p>
 
                 </div>
                 </section>
 
-                </section>
+              </section>
+              <section>
+                <h5>Simple Network</h5>
+                <img src='{{url_for('static', filename='images/Duo.png')}}'>
+                <img src='{{url_for('static', filename='images/PianoClas.jpg')}}' style="max-width: 200px;position:absolute; top:200px; left:0px">
+                <div class="fragment">
+                  <img src='{{url_for('static', filename='images/Trio.png')}}' style = "position:absolute; top: 88px; left:276px;">
+                  <img src='{{url_for('static', filename='images/PianoFav.jpg')}}' style="max-width: 200px; position:absolute; top: 75px; left:700px;">
+                  <img src='{{url_for('static', filename='images/beethoven.jpg')}}' style="max-width: 200px; position:absolute; top: 300px; left:700px;">
+                  </div>
+              </section>
                 <section>
                   <h5>The Algorithm</h5>
-                  <div><br></div>
-                  <div>Perform unsupervised community detection clustering with Infomap</div>
-                  <div><br></div>
-                  <div>No labels attached to communities</div>
-                  <div><br></div>
-                  <div>Majority voting on communities with labeled data</div>
+                  <div style="max-width: 200px; position: absolute; top:100px; left:-110px;">
+                    <p>Method</p>
+                    <ul>
+                      <li>Unsupervised Network Clustering: Infomap</li>
+                      <br>
+                      <li>Unlabeled Clusters</li>
+                    </ul>
+                  </div>
+                  <div class="fragment" style ="max-width: 200px; position: absolute; top:100px; left:800px;">
+                    <p>Interpretation</p>
+                    <ul>
+                      <li>Majority voting with pre-labeled nodes (songs)</li>
+                    </ul>
+                  </div>
+                  <div class="fragment">
+                  <img src='{{url_for('static', filename='images/community0.png')}}'>
+                  <p style="position: absolute; top:35px; left:200px;">Largest Community: Baroque</p>
+                </div>                  
                 </section>
                 <section>
-                  <h3>Predicted Labels</h3>
-                  <img src='{{url_for('static', filename='images/00001.jpg')}}' style="max-width: 550px">
-                </section>
-                <section>
-                  <h2>I'm Matthew Sweeten.</h2>
-                  <img src="{{url_for('static', filename='images/SweetenHeadshot.jpg')}}" style="max-width: 200px; position: absolute; top: 100px; left: 150px;">
-                  <img src="{{url_for('static', filename='images/asu.jpg')}}" style="max-width: 200px; position: absolute; top: 300px; left: 150px;">
+                  <section data-transition="fade">
+                    <h3>Song Predictions</h3>
+                    <div style="max-width: 200px;position: absolute; top:100px; left:-100px;">
+                      <ul>
+                        <li>Switch Genre from Spotify (Non-Compilation)</li>
+                        </ul>
+                      </div>
+                    <img src='{{url_for('static', filename='images/a.png')}}' style="max-width: 550px">
+                    <p>New Genre Non-Compilation</p>
+                  </section>
+                  <section data-transition="fade">
+                    <h3>Song Predictions</h3>
+                    <div style="max-width: 200px;position: absolute; top:100px; left:-100px;">
+                      <ul>
+                        <li>Switch Genre from Spotify (Non-Compilation)</li>
+                        <br>
+                        <li>Same Genre as Spotify (Non-Compilation)</li>
+                        </ul>
+                      </div>
+                  <img src='{{url_for('static', filename='images/ab.png')}}' style="max-width: 550px">
+                  </section>
+                  <section data-transition="fade">
+                    <h3>Song Predictions</h3>
+                    <div style="max-width: 200px;position: absolute; top:100px; left:-100px;">
+                      <ul>
+                        <li>Switch Genre from Spotify (Non-Compilation)</li>
+                        <br>
+                        <li>Same Genre as Spotify (Non-Compilation)</li>
+                        </ul>
+                    </div>
+                    <div style="max-width: 200px;position: absolute; top:100px; left:800px;">
+                      <ul>
+                        <li>Same Genre as Spotify (Compilation)</li>
 
-                    <img src="{{url_for('static', filename='images/UR.2col.v1.jpg')}}" style="max-width: 200px; position: absolute; top: 500px; left: 150px;">
+                        </ul>
+                      </div>
+                  <img src='{{url_for('static', filename='images/abc.png')}}' style="max-width: 550px">
+                  </section>
+                  
+                  <section data-transition="fade">
+                    <h3>Song Predictions</h3>
+                    <div style="max-width: 200px;position: absolute; top:100px; left:-100px;">
+                      <ul>
+                        <li>Switch Genre from Spotify (Non-Compilation)</li>
+                        <br>
+                        <li>Same Genre as Spotify (Non-Compilation)</li>
+                        </ul>
+                    </div>
+                    <div style="max-width: 200px;position: absolute; top:100px; left:800px;">
+                      <ul>
+                        <li>Same Genre as Spotify (Compilation)</li>
+                        <br>
+                        <br>
+                        <br>
+                        <li>Switch Genre from Spotify (Compilation)</li>
+                        </ul>
+                      </div>
+                  <img src='{{url_for('static', filename='images/abcd.png')}}' style="max-width: 550px">
+                  </section>                  
+                </section>
+                <section>
+                  <h2>Matthew Sweeten</h2>
+                  <img src="{{url_for('static', filename='images/20170202-SweetenHeadshot.jpg')}}" style="max-width: 200px; position: absolute; top: 100px; left: 150px;">
+                  <img src="{{url_for('static', filename='images/UR.2col.v1.jpg')}}" style="max-width: 200px; position: absolute; top: 300px; left: 150px;">
+                  <img src="{{url_for('static', filename='images/Kayak.jpg')}}" style="max-width: 400px; position: absolute; top: 400px; left: 150px;">                  
                     <div style="position: absolute; left: 570px; top: 120px;">
-                      <h3 style="text-align: left;">Ph.D. Political Methodology</h3>
+                      <h3 style="text-align: left;">Ph.D. Political Science</h3>
                       <p style="text-align: left;">Unsupervised Text Classification</p>
                       <p style="text-align: left;">Political Preference Estimation</p>
                       <p style="text-align: left;">Text as Data</p>

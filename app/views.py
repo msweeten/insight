@@ -163,23 +163,36 @@ def ren():
 @app.route('/<song_uri>')
 def get_song_uri(song_uri):
     con = connect()
-    previous_song = base + song_uri.replace('/results', '')
-    print previous_song
-    previous_song = dict({'uri': previous_song})
+    #if
+    cur = con.cursor()
+    check = """SELECT "Uri" FROM node_communities;"""
+    cur.execute(check)
+    songs = cur.fetchall()
+    songs = list(songs)
 
-    query = """SELECT "Community" FROM node_communities WHERE "Uri" = '%s';""" % (song_uri)
-    query_result = pd.read_sql_query(query, con)
-    query_result = query_result.iloc[0]['Community']
-    query_comm = """SELECT "Uri" FROM node_communities WHERE "Community" = %s ORDER BY "popularity" DESC LIMIT 50;""" % (query_result)
-    comm_results = pd.read_sql_query(query_comm, con)
-    subgenre = []
-    comm_results_v = list(comm_results['Uri'])
-    print comm_results_v
-    for i in range(len(comm_results_v)):
-        print comm_results_v[i]
-        dict_song = mydict([['widget', base + comm_results_v[i]], ['results_uri',  '/' + comm_results_v[i]]])
-        subgenre.append(dict_song)
-    return render_template('results.html', previous_song = previous_song, subgenre = subgenre)
+    print song_uri
+    print songs[0]
+
+    if any(str(song_uri) in s[0] for s in songs):
+
+        previous_song = base + song_uri.replace('/results', '')
+        print previous_song
+        previous_song = dict({'uri': previous_song})
+
+        query = """SELECT "Community" FROM node_communities WHERE "Uri" = '{0}'""".format(song_uri)
+        query_result = pd.read_sql_query(query, con)
+        query_result = query_result.iloc[0]['Community']
+        query_comm = """SELECT "Uri" FROM node_communities WHERE "Community" = {0} ORDER BY "popularity" DESC LIMIT 50;""".format(query_result)
+        comm_results = pd.read_sql_query(query_comm, con)
+        subgenre = []
+        comm_results_v = list(comm_results['Uri'])
+
+        for i in range(len(comm_results_v)):
+            dict_song = mydict([['widget', base + comm_results_v[i]], ['results_uri',  '/' + comm_results_v[i]]])
+            subgenre.append(dict_song)
+        return render_template('results.html', previous_song = previous_song, subgenre = subgenre)
+    else:
+        return render_template('404.html')
 
 @app.route('/slides')
 def slides():
