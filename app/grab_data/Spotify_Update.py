@@ -1,14 +1,14 @@
 import psycopg2
 import pandas as pd
 import spotipy
-
+from spotipy.oauth2 import SpotifyClientCredentials
 
 class call_authorization(object):
     def __init__(self, num):
         """
            Creates Spotify API instance using Key
         """
-        execfile('/home/msweeten/insight/Config.py')
+        exec(open('/home/msweeten/insight/Config.py').read())
         client_credentials_manager = SpotifyClientCredentials(client_id = CLIENT_ID, client_secret = CLIENT_SECRET)
         sp = spotipy.Spotify(client_credentials_manager = client_credentials_manager)
         self.sp = sp
@@ -21,7 +21,7 @@ class call_authorization(object):
         self.keywords = ['name', 'uri', 'duration_ms', 'popularity']
         self.artist_kw = ['name', 'uri']
         self.album_kw = ['name', 'uri']
-        self.genres = ['Avant-Garde', 'Baroque',
+        self.genres = ['Avant Garde', 'Baroque',
                   'Choral',
                   'Early Music', 'Classical Period',
                   'Minimal', 'Opera',
@@ -29,6 +29,8 @@ class call_authorization(object):
                   'Romantic']
 
     def grab_data(self):
+        """Grabs between 1000 and 1050 new songs from Spotify Web API
+        """
         cur = self.con.cursor()
         query_term = "genre:" + self.genre
         new_files = 0
@@ -39,7 +41,7 @@ class call_authorization(object):
 
             for q in query_results:
                 URI = q['uri']
-                cur.execute("SELECT * FROM classical_song_nodes_b WHERE song_uri=(%s)", (URI,))
+                cur.execute("SELECT * FROM classical_update WHERE song_uri=(%s)", (URI,))
                 match = cur.fetchall()
                 if len(match) == 0:
                     data = []
@@ -69,8 +71,9 @@ class call_authorization(object):
                         set_type = 'test'
                     data.append(genre)
                     data.append(set_type)
+                    data.append(new_files)
                     data = tuple(data)
-                    cur.execute("INSERT INTO test (song_name, song_uri, song_duration_ms, popularity, artists_name, artist_id, album_name, album_uri,genre, set_type) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", data)
+                    cur.execute("INSERT INTO escrow (song_name, song_uri, song_duration_ms, popularity, artists_name, artist_id, album_name, album_uri,genre, set_type, index) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", data)
                     new_files += 1                
 
             offset += 50
