@@ -241,7 +241,7 @@ class merge_datasets(object):
         self.con.commit()
             
             
-    def update_network(self):
+    def update_network(self, start):
         """Takes new song nodes and updates 
            Weight Edges for existing connections
            Creates New Data for New Connections
@@ -263,10 +263,11 @@ class merge_datasets(object):
         network = []
         edge_weights = []
         
-        for i in range(len(new_songs)):
+        for i in range(start, len(new_songs)):
             print str(i)
             song = new_songs[i]
             #Match Old Network
+            #Fix for new singleton
             match_album = """SELECT node{0} FROM classical_update WHERE album_uri='{1}'""".format(str(self.iteration), song[0])
             cur.execute(match_album)
             node_matches = cur.fetchall()
@@ -293,22 +294,23 @@ class merge_datasets(object):
                     edge_weights.append(1)
 
         #links (both edges) in network_update
-        for edg in range(len(network)):
-            print str(edg)
-            e = network[edg]
-            e2 = edge_weights[edg]
-            #links (both edges) in network_update
-            edge_query = """SELECT "Weights" FROM network_update WHERE ("NodeA"={0} AND "NodeB"={1}) OR ("NodeA"={1} AND "NodeB"={0})""".format(e[0], e[1])
-            cur.execute(edge_query)
-            match = cur.fetchone()
-            if match != None:
-                weight = match[0] + e2
-                update_edge = """UPDATE network_update SET "Weights"={2} WHERE ("NodeA"={0} AND "NodeB"={1}) OR ("NodeA"={1} AND "NodeB"={0})""".format(e[0], e[1], weight)
-                cur.execute(update_edge)
-            else:
-                weight = e2
-                update_edge = """INSERT INTO network_update ("NodeA", "NodeB", "Weights", iteration) VALUES ({0}, {1}, {2}, {3})""".format(e[0], e[1], weight, self.iteration)
-                cur.execute(update_edge)
+        if len(network) > 0:
+            for edg in range(len(network)):
+                print str(edg)
+                e = network[edg]
+                e2 = edge_weights[edg]
+                #links (both edges) in network_update
+                edge_query = """SELECT "Weights" FROM network_update WHERE ("NodeA"={0} AND "NodeB"={1}) OR ("NodeA"={1} AND "NodeB"={0})""".format(e[0], e[1])
+                cur.execute(edge_query)
+                match = cur.fetchone()
+                if match != None:
+                    weight = match[0] + e2
+                    update_edge = """UPDATE network_update SET "Weights"={2} WHERE ("NodeA"={0} AND "NodeB"={1}) OR ("NodeA"={1} AND "NodeB"={0})""".format(e[0], e[1], weight)
+                    cur.execute(update_edge)
+                else:
+                    weight = e2
+                    update_edge = """INSERT INTO network_update ("NodeA", "NodeB", "Weights", iteration) VALUES ({0}, {1}, {2}, {3})""".format(e[0], e[1], weight, self.iteration)
+                    cur.execute(update_edge)
         self.con.commit()
             
         #update network

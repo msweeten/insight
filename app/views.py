@@ -22,7 +22,7 @@ class mydict(dict):
     def __str__(self):
         return json.dumps(self)
 
-base = "https://embed.spotify.com/?uri=" 
+base = "https://embed.spotify.com/?uri="
 @app.route('/')
 def main():
     return render_template('home.html')
@@ -182,7 +182,7 @@ def get_song_uri(song_uri):
         query = """SELECT "Community" FROM node_communities_update WHERE "Uri" = '{0}'""".format(song_uri)
         query_result = pd.read_sql_query(query, con)
         query_result = query_result.iloc[0]['Community']
-        query_comm = """SELECT "Uri" FROM node_communities_update WHERE "Community" = {0} ORDER BY "popularity" DESC LIMIT 50;""".format(query_result)
+        query_comm = """SELECT "Uri" FROM node_communities_update WHERE "Community" = {0} AND "Uri" != '{1}' ORDER BY "popularity" DESC LIMIT 50;""".format((query_result, song_uri))
         comm_results = pd.read_sql_query(query_comm, con)
         subgenre = []
         comm_results_v = list(comm_results['Uri'])

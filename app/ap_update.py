@@ -29,7 +29,7 @@ def get_iteration():
 def update():
     """Update Song Data and Network
     """
-    call = su.call_authorization(5000)
+    call = su.call_authorization(10000)
     call.grab_data()
 
     iteration = get_iteration()
@@ -37,7 +37,7 @@ def update():
     #match_songs
     new_iteration.match_songs()
     #update network
-    new_iteration.update_network()
+    new_iteration.update_network(0)
     #move escrow and clear
     new_iteration.move_escrow()
     #update network metadata
