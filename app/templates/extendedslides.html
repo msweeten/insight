@@ -42,60 +42,72 @@
                 <div>Classical Music for Discerning Taste</div>
               </section>
               <section>
-                <h1>Roadmap</h1>
-                <ul>
-                  <li>Motivation</li>
-                  <li>The Web Application</li>
-                  <li>Methodology and Algorithms</li>
-                  <li>Initial Results</li>
-                  <li>Most Recent Results</li>
-                  <li>Future Direction and Extensibility</li>
-                </ul>
+                <h2>Roadmap</h2>
+                <br>
+                <div style="max-width: 300px; position: absolute; top:
+                            50px; left -100px">
+                  <ol>
+                    <li>Motivation</li>
+                    <li>The Web Application</li>
+                    <li>Methodology and Algorithms</li>
+                    <li>Initial Results</li>
+                    <li>Most Recent Results</li>
+                    <li>Future Direction and Extensibility</li>
+                  </ol>
+                </div>
+                <img src='{{url_for('static',
+                filename='images/Extended/bg_road2.jpg')}}'
+                style="position: absolute; top:
+                            300px; left 300px">
               </section>
               <section>
-                <h1>Choosing a Project</h1>
+                <h3>Choosing a Project</h3>
                 <ul>
-                  <li>Difficult Measurement Problem</li>
-                  <li>Existing Product Fails</li>
-                  <li>Data is Accessible</li>
-                  <li>Non-Traditional Data</li>
+                  <li class="fragment">Difficult Measurement Problem</li>
+                  <li class="fragment">Existing Product is Inadequate</li>
+                  <li class="fragment">Data is Publicly Accessible</li>
+                  <li class="fragment">Non-Traditional Data</li>
                 </ul>
               </section>
               <section>
                 <h3>Music Genre Recommendations</h3>
                 <p>Tricky to provide song recommendations</p>
-                <br>
+                <img src='{{url_for('static',
+                     filename='images/Extended/mozart.jpg')}}'
+                     style="max-width: 300px">
+                <span style="position: relative; top:
+                             -100px">&#x3f;&#8594;</span>
+                <img src='{{url_for('static',
+                     filename='images/Extended/beethoven.jpg')}}'
+                     style="max-width: 300px">
+              </section>
+              <section>
+                <h3>Music Genre Recommendations</h3>
                 <p>Pandora and Spotify's Methods Fail</p>
+                <img src='{{url_for('static',
+                     filename='images/Extended/orchestra.jpg')}}'
+                     style="max-width: 300px">
+                <img src='{{url_for('static',
+                     filename='images/Extended/electronic.jpg')}}'
+                     style="max-width: 300px">                
                 <br>
                 <p>Rich data available via Spotify Web API</p>
-                <br>
                 <p>Audio, Song, Artist, and Album Metadata</p>
               </section>
               <section>
-                <h1>Data Trade-Offs</h1>
+                <h3>Data Trade-Offs</h3>
                 <ul>
                   <li>Many Genres vs. Sample Size and Computational Resources</li>
                   <li>Complexity of Data vs. Sample Size and Time Constraints</li>
                   <li>Generalizability vs. Completeness</li>
                 </ul>
                 <br>
-                <p>Solution: Zoom in on one genre</p>
-              </section>
-              <section>
-                <h1>Putting the Microscope on Classical Music</h1>
-                <p>Useful Case:</p>
-                <ul>
-                  <li>Large Population of Songs</li>
-                  <li>Multiple Recordings by Multiple Symphonies and Orchestras</li>
-                  <li>Common Links between Composers</li>
-                  <li>Features in Titles</li>
-                  <li>Hard to Provide Recommendations</li>
-                </ul>
-              </section>
-              <section>
-                <h1>Solution:</h1>
-                <br>
-                <p>Provide Subgenre Recommendations</p>
+                <div class="fragment">
+                  <p>Solution: Focus On One Genre</p>
+                  <img src='{{url_for('static',
+                filename='images/Extended/sheet-music.jpg')}}'
+                style="max-width: 250px;">
+                </div>
               </section>
               <section>
                 <section>
@@ -148,7 +160,7 @@
                 </section>
               </section>
               <section>
-                <h2>What's the concept behind my playlists?</h2>
+                <h2>What's the concept behind my recommendations?</h2>
                 <div>
                   <p>Multiple recordings for one song</p>
                   <img src='{{url_for('static', filename='images/beethoven.jpg')}}'>
@@ -157,11 +169,23 @@
                 </div>
               </section>
               <section>
+                <h3>Putting the Microscope on Classical Music</h3>
+                <p>Useful Case</p>
+                <ul>
+                  <li>Large Population of Songs</li>
+                  <li>Multiple Recordings by Multiple Symphonies and Orchestras</li>
+                  <li>Common Links between Composers</li>
+                  <li>Features in Song Titles</li>
+                  <li>Hard to Provide Recommendations</li>
+                </ul>
+              </section>
+              <section>
                 <h5>Here's what I did</h5>
                 <section id="fragments">
                 <div class="fragment">
 				  <img src='{{url_for('static', filename='images/Spotify_Icon_RGB_Green.png')}}' style="max-width: 100px; position: absolute; top: 0px; left: 65px;">
-                  <p style="vertical-align:middle">~80,000 songs</p>
+                  <p style="vertical-align:middle">~80,000 songs
+                  &#8594; ~115,000 songs</p>
                 </div>
                 <div class="fragment">
 
@@ -175,9 +199,9 @@
                 </div>
                 <div class="fragment">
                   <span>&#8595;</span>
-                  <img src='{{url_for('static', filename='images/igraph3.svg')}}' style="max-width: 100px; position: absolute; top:475px; left:65px;">
-                  <p>Nodes: Songs (~45,000)</p>
-                  <p>Links: Albums (~550,000)</p>
+                  <img src='{{url_for('static', filename='images/igraph3.svg')}}' style="max-width: 100px; position: absolute; top:405px; left:65px;">
+                  <p>Nodes: Songs ~45,000 &#8594; ~62,000</p>
+                  <p>Links: Albums ~550,000 &#8594; ~780,000</p>
 
                 </div>
                 </section>
@@ -187,15 +211,8 @@
               
               <section>
                 
-                <h5>Matching Songs</h5>
-                <p>Identify Similarly Named Songs with Fuzzy Matching</p>
-                <br>
-                <section id="fragment">
-                  <p class="fragment">Eliminate Conflicting Songs with
-                    Clause
-                    Matching</p>
-
-                  <div class="fragment"><p>Key Signature</p>
+                <h5>Clause and Fuzzy Matching</h5>
+                  <div class="fragment" style="max-width: 500px; position: absolute; top:50px; left:0px;"><p>Key Signature</p>
                     <ul>
                       <li>Bagatelle in <font color="9999ff">A
                       Minor</font>, WoO 59 - Fur Elise by
@@ -207,10 +224,11 @@
                     </ul>
 
                   </div>
-                  <div class="fragment"><p>Series and Movement</p>
+                  <div class="fragment" style="max-width: 500px; position: absolute; top:50px; left:500px;"><p>Series and Movement</p>
                     <ul>
                       <li><font color="00ffff">Symphony No. 7</font>,
-                        Op. 92: <font color="#33cc33">II</font>. Allegretto</li>
+                        Op. 92: <font color="#33cc33">II</font>. Allegretto
+                        by Beethoven</li>
                       <li><font color="00ffff">Die
                           Walkure</font>, <font color="#33cc33">Act
                           III</font>: Ride of the Valkyries
@@ -221,7 +239,6 @@
                         by Copland</li>
                     </ul>
                   </div>
-                  </section>
               </section>
               <section>
                 <h5>Simple Network</h5>
@@ -240,6 +257,20 @@
                   <li>Faster acquisition and modeling</li>
                   <li>Can be further integrated with audio and user data</li>
                 </ul>
+              </section>
+              <section>
+                <h3>Potential Network Models</h3>
+                  <ul>
+                    <li class="fragment">Network Distance
+                      Measure: <font color="ff0000">Not fully
+                      connected network</font></li>
+                    <li class="fragment">Semi-Supervised Community
+                    Detection: <font color="ff0000">Only implemented
+                    in Java</font></li>
+                    <li class="fragment">Unsupervised Community
+                    Detection <font color="008000">Networkx and
+                    iGraph in Python</font></li>
+                  </ul>
               </section>
               <section>
                   <h5>The Algorithm</h5>
@@ -270,7 +301,8 @@
                         <li>Switch Genre from Spotify (Non-Compilation)</li>
                         </ul>
                       </div>
-                    <img src='{{url_for('static', filename='images/a.png')}}' style="max-width: 550px">
+                    <img src='{{url_for('static', filename='images/New/Old/a2.png')}}'
+                         style="max-width: 550px">
                   </section>
                   <section data-transition="fade">
                     <h3>Initial Song Predictions</h3>
@@ -281,7 +313,7 @@
                         <li>Same Genre as Spotify (Non-Compilation)</li>
                         </ul>
                       </div>
-                  <img src='{{url_for('static', filename='images/ab.png')}}' style="max-width: 550px">
+                  <img src='{{url_for('static', filename='images/New/Old/ab2.png')}}' style="max-width: 550px">
                   </section>
                   <section data-transition="fade">
                     <h3>Initial Song Predictions</h3>
@@ -298,7 +330,7 @@
 
                         </ul>
                       </div>
-                  <img src='{{url_for('static', filename='images/abc.png')}}' style="max-width: 550px">
+                  <img src='{{url_for('static', filename='images/New/Old/abc2.png')}}' style="max-width: 550px">
                   </section>
 
                   <section data-transition="fade">
@@ -319,25 +351,54 @@
                         <li>Switch Genre from Spotify (Compilation)</li>
                         </ul>
                       </div>
-                  <img src='{{url_for('static', filename='images/abcd.png')}}' style="max-width: 550px">
+                  <img src='{{url_for('static', filename='images/New/Old/abcd2.png')}}' style="max-width: 550px">
                   </section>
                 </section>
                 <section>
                   <section data-transition="fade">
                     <h3>Latest Iteration</h3>
-                    <p>Z Iterations</p>
-                    <p>Transition Slide</p>
-                    <p>X False Positives to Y False Positives</p>
+                    <p>Seven Iterations Over Seven Weeks</p>
+                    <br>
+                    <p>5,000 songs in each iteration</p>
+                    <br>
+                    <p>Recently updated to 10,000 per week</p>
                   </section>
                   <section data-transition="fade">
-                    <h3>Latest Iteration</h3>
-                    <p>New Chart Like Previous Set</p>
-                    <p>Maybe side by side with previous version?</p>
+                    <h3>Comparison Over Time</h3>
+                    <img src='{{url_for('static',
+                    filename='images/New/abcd2.png')}}'  style="max-width: 550px">
+                    <p style="position: absolute; top:300px;
+                    left:-100px;">Latest</p>
                   </section>
                   <section data-transition="fade">
-                    <h3>Latest Iteration</h3>
-                    <p>Switched genres from first run</p>
-                    
+                    <h3>Pre-Labeled (Training) Song Switching</h3>
+                    <img src='{{url_for('static', filename='images/New/Old/count_training.png')}}'>
+                    <p style="position: absolute; top: 300px; left: -100px">Initial</p>
+                  </section>
+                  <section data-transition="fade">
+                    <h3>Pre-Labeled (Training) Song Switching</h3>
+                    <img src='{{url_for('static', filename='images/New/count_training.png')}}'>
+                    <p style="position: absolute; top: 300px; left: -100px">Latest</p>
+                  </section>
+                  <section data-transition="fade">
+                    <h3>Un-Labeled (Test) Song Switching</h3>
+                    <img src='{{url_for('static', filename='images/New/Old/count_test.png')}}'>
+                    <p style="position: absolute; top: 300px; left: -100px">Initial</p>
+                  </section>
+                  <section data-transition="fade">
+                    <h3>Un-Labeled (Test) Song Switching</h3>
+                    <img src='{{url_for('static', filename='images/New/count_test.png')}}'>
+                    <p style="position: absolute; top: 300px; left: -100px">Latest</p>
+                  </section>
+                  <section data-transition="fade">
+                    <h3>Takeaways</h3>
+                    <ul>
+                      <li>Transition from unlabeled genre to pre-labeled</li>
+                      <li>Improvement in classical music recommendations</li>
+                      <li>Pre-labeled songs generally remain in same
+                        subgenre</li>
+                      <li>Fewer test cases suggests bigger future updates</li>
+                    </ul>
                   </section>
                 </section>
                 <section>
@@ -345,7 +406,7 @@
                   <ul>
                     <li>Integrate Spotify Login/User Data</li>
                     <li>Provide Feedback for Similar Communities</li>
-                    <li>Iterate on identifying identical songs</li>
+                    <li>Iterate on Identifying Identical Songs</li>
                     <li>Integrate Audio Data</li>
                   </ul>
                   
@@ -363,6 +424,41 @@
                       <p style="text-align: left;">Semantic Modeling</p>
                     </div>
                 </section>
+                <section>
+                  <h1>Appendix</h1>
+                </section>
+                <section>
+                  <h5>Initial Song Switching (Test): Baroque Period</h5>
+                    <img src='{{url_for('static', filename='images/New/Old/baroquetest.png')}}'>
+                </section>
+                <section>
+                  <h5>Initial Song Switching (Training): Baroque Period</h5>
+                    <img src='{{url_for('static', filename='images/New/Old/baroquetraining.png')}}'>
+                </section>
+                <section>
+                  <h5>Initial Song Switching (Test): Romantic Period</h5>
+                    <img src='{{url_for('static', filename='images/New/Old/romantictest.png')}}'>
+                </section>
+                <section>
+                  <h5>Initial Song Switching (Training): Romantic Period</h5>
+                    <img src='{{url_for('static', filename='images/New/Old/romantictraining.png')}}'>
+                </section>
+                <section>
+                  <h5>Latest Song Switching (Test): Baroque Period</h5>
+                    <img src='{{url_for('static', filename='images/New/baroquetest.png')}}'>
+                </section>
+                <section>
+                  <h5>Latest Song Switching (Training): Baroque Period</h5>
+                    <img src='{{url_for('static', filename='images/New/baroquetraining.png')}}'>
+                </section>                
+                <section>
+                  <h5>Latest Song Switching (Test): Romantic Period</h5>
+                    <img src='{{url_for('static', filename='images/New/romantictest.png')}}'>
+                </section>
+                <section>
+                  <h5>Latest Song Switching (Training): Romantic Period</h5>
+                    <img src='{{url_for('static', filename='images/New/romantictraining.png')}}'>
+                </section>                                
             </section>
 			</div>
 		</div>
