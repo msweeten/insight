@@ -1,4 +1,4 @@
-#Data 
+#Data
 InitialDataFetch.py
 
 #Config File
@@ -13,3 +13,4 @@ InitialData.py
 *.json
 
 __pycache__/
+*.pyc
